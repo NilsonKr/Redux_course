@@ -1,26 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const App = () => {
+	const apiUrl = 'https://jsonplaceholder.typicode.com/users';
 	const [users, setUsers] = useState([]);
 
 	useEffect(() => {
-		setUsers([
-			{
-				name: 'Nilson Diaz',
-				email: 'nilson@kr.com',
-				website: 'nilsondiaz.com',
-			},
-			{
-				name: 'Mina',
-				email: 'mina@kr.com',
-				website: 'mina.com',
-			},
-			{
-				name: 'Hirai Momo',
-				email: 'momo@kr.com',
-				website: 'momo.com',
-			},
-		]);
+		axios.get(apiUrl).then(({ data }) => {
+			setUsers(data);
+		});
 	}, []);
 
 	return (
