@@ -1,0 +1,16 @@
+.header__nav {
+	padding: 25px 20px;
+	background-color: mediumpurple;
+}
+
+.header__nav a {
+	font-size: 2rem;
+	margin: 0 10px;
+	font-weight: bold;
+	color: white;
+	text-decoration: none;
+}
+
+.header__nav a:hover {
+	text-decoration: underline;
+}
