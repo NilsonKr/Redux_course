@@ -1,18 +1,16 @@
 // import React, { useState, useEffect } from 'react';
 // import axios from 'axios';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import * as usersActions from '../actions/usersActions';
 
 const Home = props => {
-	// const apiUrl = 'https://jsonplaceholder.typicode.com/users';
-	// const [users, setUsers] = useState([]);
+	console.log(props);
 
-	// useEffect(() => {
-	// 	axios.get(apiUrl).then(({ data }) => {
-	// 		setUsers(data);
-	// 	});
-	// }, []);
+	useEffect(() => {
+		props.fetchAll();
+	}, []);
 
 	return (
 		<div className='uTable'>
@@ -36,6 +34,12 @@ const mapStateToProps = reducers => {
 	return reducers.usersReducer;
 };
 
-export default connect(mapStateToProps, {
-	/* Actions */
-})(Home);
+export default connect(mapStateToProps, usersActions)(Home);
+
+// const [users, setUsers] = useState([]);
+
+// useEffect(() => {
+// 	axios.get(apiUrl).then(({ data }) => {
+// 		setUsers(data);
+// 	});
+// }, []);
