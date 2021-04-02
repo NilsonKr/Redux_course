@@ -1,15 +1,12 @@
-// import React, { useState, useEffect } from 'react';
-// import axios from 'axios';
-
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
-import * as usersActions from '../actions/usersActions';
+import { connect } from 'react-redux'; // connect redux with the component
+import * as usersActions from '../actions/usersActions'; //Import all actions to modified the storage
 
 const Home = props => {
 	console.log(props);
 
 	useEffect(() => {
-		props.fetchAll();
+		props.fetchAll(); //call the action "fetchAll" wich is a promise
 	}, []);
 
 	return (
@@ -31,15 +28,9 @@ const Home = props => {
 };
 
 const mapStateToProps = reducers => {
-	return reducers.usersReducer;
+	return reducers.usersReducer; //define which reducer/s will called by the actions in this components
 };
 
+//before to export the component , we call the connect of redux
+//and pass through it the reducers and actions necessaries in this component
 export default connect(mapStateToProps, usersActions)(Home);
-
-// const [users, setUsers] = useState([]);
-
-// useEffect(() => {
-// 	axios.get(apiUrl).then(({ data }) => {
-// 		setUsers(data);
-// 	});
-// }, []);
