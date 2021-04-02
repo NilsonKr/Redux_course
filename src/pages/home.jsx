@@ -3,10 +3,11 @@ import { connect } from 'react-redux'; // connect redux with the component
 import * as usersActions from '../actions/usersActions'; //Import all actions to modified the storage
 
 const Home = props => {
-	console.log(props);
+	console.log(props.loading);
+	console.log(props.error);
 
 	useEffect(() => {
-		props.fetchAll(); //call the action "fetchAll" wich is a promise
+		props.fetchUsers(); //call the action "fetchAll" wich is a promise
 	}, []);
 
 	return (
