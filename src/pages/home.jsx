@@ -2,28 +2,26 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux'; // connect redux with the component
 import * as usersActions from '../actions/usersActions'; //Import all actions to modified the storage
 
-const Home = props => {
-	console.log(props.loading);
-	console.log(props.error);
+import UsersTable from '../components/UsersTable';
+import Loader from '../components/Loader';
+import Error from '../components/Error';
 
+const Home = props => {
 	useEffect(() => {
 		props.fetchUsers(); //call the action "fetchAll" wich is a promise
 	}, []);
 
+	if (props.error) {
+		return <Error message={props.error} />;
+	}
+
+	if (props.loading) {
+		return <Loader />;
+	}
+
 	return (
-		<div className='uTable'>
-			<div className='uTable__header'>
-				<h2 className='users--title'>Name</h2>
-				<h2 className='users--title title-border'>E-Mail</h2>
-				<h2 className='users--title  title-border'>WebSite</h2>
-			</div>
-			{props.users.map(user => (
-				<div className='uTable__user' key={user.id}>
-					<p className='user--item'>{user.name}</p>
-					<p className='user--item'>{user.email}</p>
-					<p className='user--item'>{user.website}</p>
-				</div>
-			))}
+		<div className='mainContainer'>
+			<UsersTable />
 		</div>
 	);
 };
