@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 const UsersTable = props => {
-	console.log(props);
 	return (
 		<div className='uTable'>
 			<div className='uTable__header'>

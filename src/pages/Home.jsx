@@ -8,7 +8,9 @@ import Error from '../components/Error';
 
 const Home = props => {
 	useEffect(() => {
-		props.getAll(); //call the action "fetchAll" wich is a promise
+		if (!props.users.length) {
+			props.getAll(); //call the action "fetchAll" wich is a promise
+		}
 	}, []);
 
 	if (props.error) {
