@@ -2,7 +2,8 @@ import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Layout from './components/Layout';
-import Home from './pages/home';
+import Home from './pages/Home';
+import Posts from './pages/Posts';
 
 const App = () => {
 	return (
@@ -10,6 +11,7 @@ const App = () => {
 			<Layout>
 				<Switch>
 					<Route exact path='/' component={Home}></Route>
+					<Route exact path='/posts/:key' component={Posts}></Route>
 				</Switch>
 			</Layout>
 		</BrowserRouter>

@@ -18,14 +18,14 @@ body {
 	align-items: center;
 }
 .uTable {
-	width: 80%;
+	width: 70%;
 }
 
 .uTable__header,
 .uTable__user {
 	display: 100%;
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
+	grid-template-columns: repeat(3, 1fr) 50px;
 	justify-items: center;
 }
 
@@ -40,6 +40,11 @@ body {
 	width: 100%;
 	font-size: 2rem;
 	padding: 10px;
+}
+
+.user--icon {
+	color: mediumvioletred;
+	align-self: center;
 }
 
 .title-border {
