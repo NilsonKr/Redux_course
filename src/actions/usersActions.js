@@ -1,12 +1,12 @@
 import axios from 'axios';
-import { FETCH_USERS, LOADING, ERROR } from '../types/usersActions';
+import { USERS_FETCH, USERS_LOADING, USERS_ERROR } from '../types/usersTypes';
 
 const apiUrl = 'https://jsonplaceholder.typicode.com/users';
 
 //is a asynchronus request so we gotta return  a function
-export const fetchUsers = () => async dispatch => {
+export const getAll = () => async dispatch => {
 	dispatch({
-		type: LOADING,
+		type: USERS_LOADING,
 	});
 
 	try {
@@ -14,12 +14,12 @@ export const fetchUsers = () => async dispatch => {
 
 		//trigger who will fire the change on the reducers
 		dispatch({
-			type: FETCH_USERS,
+			type: USERS_FETCH,
 			payload: data,
 		});
 	} catch (error) {
 		dispatch({
-			type: ERROR,
+			type: USERS_ERROR,
 			payload: error.message,
 		});
 	}

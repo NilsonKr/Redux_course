@@ -1,21 +1,20 @@
-import { USERS_FETCH, USERS_LOADING, USERS_ERROR } from '../types/usersTypes';
+import { POSTS_FETCH, POSTS_LOADING, POSTS_ERROR } from '../types/postsTypes';
 
 const INITIAL_STATE = {
 	error: null,
 	loading: false,
-	users: [],
+	posts: [],
 };
 
-//Reducer who modified the storage based on its cases
 export default (state = INITIAL_STATE, action) => {
 	switch (action.type) {
-		case USERS_FETCH:
-			return { ...state, users: action.payload, loading: false };
+		case POSTS_FETCH:
+			return { ...state, posts: action.payload, loading: false };
 			break;
-		case USERS_LOADING:
+		case POSTS_LOADING:
 			return { ...state, loading: true, error: null };
 			break;
-		case USERS_ERROR:
+		case POSTS_ERROR:
 			return { ...state, loading: false, error: action.payload };
 			break;
 		default:
