@@ -59,6 +59,7 @@ const mapStateToProps = ({ usersReducer, postsReducer }) => {
 	};
 };
 
+//Avoid conflicts between conventional names which are the same
 const mapDispatchToProps = {
 	getAllUsers,
 	getPost,
