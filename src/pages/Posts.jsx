@@ -5,6 +5,7 @@ import * as postsActions from '../actions/postsActions';
 
 import Loader from '../components/Loader';
 import Error from '../components/Error';
+import PostsList from '../components/PostsList';
 
 import './styles/Posts.css';
 
@@ -25,7 +26,7 @@ const Posts = props => {
 	}, []);
 
 	//if is loading show spinner
-	if (props.usersReducer.users.loading) {
+	if (props.usersReducer.loading || props.postsReducer.loading) {
 		return (
 			<div className='mainContainer'>
 				<Loader />
@@ -34,7 +35,7 @@ const Posts = props => {
 	}
 
 	//show error in case
-	if (props.usersReducer.error) {
+	if (props.usersReducer.error || props.postsReducer.error) {
 		return (
 			<div className='mainContainer'>
 				<Error message={props.usersReducer.error} />
@@ -46,15 +47,18 @@ const Posts = props => {
 		<div className='postsContainer'>
 			{/* Get the name from the storage*/}
 			{props.usersReducer.users.length && (
-				<h1>
-					Posts By <em>{props.usersReducer.users[indexUser].name}</em>{' '}
-				</h1>
+				<React.Fragment>
+					<h1 className='posts--user'>
+						Posts By <em>{props.usersReducer.users[indexUser].name}</em>{' '}
+					</h1>
+					<PostsList index={indexUser} />
+				</React.Fragment>
 			)}
 		</div>
 	);
 };
 
-//Maps redux connect
+//Map State from reducers to props
 const mapStateToProps = ({ usersReducer, postsReducer }) => {
 	return {
 		usersReducer,
@@ -63,6 +67,7 @@ const mapStateToProps = ({ usersReducer, postsReducer }) => {
 };
 
 //Avoid conflicts between conventional names which are the same
+//Map individual actions to props
 const mapDispatchToProps = {
 	getAllUsers,
 	getPost,
