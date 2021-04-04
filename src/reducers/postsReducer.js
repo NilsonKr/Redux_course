@@ -1,4 +1,4 @@
-import { POSTS_FETCH, POSTS_LOADING, POSTS_ERROR } from '../types/postsTypes';
+import { POSTS_UPDATE, POSTS_LOADING, POSTS_ERROR } from '../types/postsTypes';
 
 const INITIAL_STATE = {
 	error: null,
@@ -8,7 +8,7 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
 	switch (action.type) {
-		case POSTS_FETCH:
+		case POSTS_UPDATE:
 			return { ...state, posts: action.payload, loading: false };
 			break;
 		case POSTS_LOADING:

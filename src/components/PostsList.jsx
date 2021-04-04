@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { openClose } from '../actions/postsActions';
 
 const PostsList = props => {
 	const { index } = props;
@@ -15,10 +16,15 @@ const PostsList = props => {
 
 	return (
 		<div className='postsList__container'>
-			{posts[postsIndex].map(post => (
-				<div className='post__container' key={post.id}>
+			{posts[postsIndex].map((post, key) => (
+				<div
+					className='post__container'
+					key={post.id}
+					onClick={() => props.openClose(postsIndex, key)}
+				>
 					<h2>{post.title}</h2>
 					<em>{post.body}</em>
+					<p>{post.isOpen ? 'Open' : 'Close'}</p>
 				</div>
 			))}
 		</div>
@@ -32,4 +38,8 @@ const mapStateToProps = ({ usersReducer, postsReducer }) => {
 	};
 };
 
-export default connect(mapStateToProps)(PostsList);
+const mapDispatchToProps = {
+	openClose,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostsList);

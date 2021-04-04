@@ -17,6 +17,7 @@
 	padding: 20px 0px 0 40px;
 }
 .post__container {
+	cursor: pointer;
 	margin: 40px 0;
 	padding: 0 0 10px;
 	border-bottom: 2px solid black;

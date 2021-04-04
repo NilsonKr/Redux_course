@@ -14,7 +14,6 @@ const { getAll: getAllUsers } = usersActions;
 const { getSingle: getPost } = postsActions;
 
 const Posts = props => {
-	console.log(props);
 	const indexUser = props.match.params.key;
 
 	useEffect(async () => {
