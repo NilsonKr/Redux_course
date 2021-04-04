@@ -14,18 +14,18 @@ const { getSingle: getPost } = postsActions;
 
 const Posts = props => {
 	console.log(props);
-
 	const indexUser = props.match.params.key;
 
 	useEffect(async () => {
 		if (!props.usersReducer.users.length) {
 			await props.getAllUsers();
 		}
+
 		props.getPost(indexUser);
 	}, []);
 
 	//if is loading show spinner
-	if (props.loading || !props.usersReducer.users.length) {
+	if (props.usersReducer.users.loading) {
 		return (
 			<div className='mainContainer'>
 				<Loader />
@@ -34,20 +34,22 @@ const Posts = props => {
 	}
 
 	//show error in case
-	if (props.error) {
+	if (props.usersReducer.error) {
 		return (
 			<div className='mainContainer'>
-				<Error message={props.error} />
+				<Error message={props.usersReducer.error} />
 			</div>
 		);
 	}
 
 	return (
 		<div className='postsContainer'>
-			<h1>
-				{/* Get the name from the storage*/}
-				Posts By <em>{props.usersReducer.users[indexUser].name}</em>{' '}
-			</h1>
+			{/* Get the name from the storage*/}
+			{props.usersReducer.users.length && (
+				<h1>
+					Posts By <em>{props.usersReducer.users[indexUser].name}</em>{' '}
+				</h1>
+			)}
 		</div>
 	);
 };
