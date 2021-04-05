@@ -7,7 +7,7 @@ const Nav = () => {
 	return (
 		<nav className='header__nav'>
 			<Link to='/'>Home</Link>
-			<Link to='/posts'>Posts</Link>
+			<Link to='/tasks'>Tasks</Link>
 		</nav>
 	);
 };
