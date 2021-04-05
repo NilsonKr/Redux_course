@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { openClose } from '../actions/postsActions';
 
+import Comments from './Comments';
+
 const PostsList = props => {
 	const { index } = props;
 	const { users } = props.usersReducer;
@@ -24,7 +26,7 @@ const PostsList = props => {
 				>
 					<h2>{post.title}</h2>
 					<em>{post.body}</em>
-					<p>{post.isOpen ? 'Open' : 'Close'}</p>
+					<p>{post.isOpen ? <Comments /> : 'Close'}</p>
 				</div>
 			))}
 		</div>
