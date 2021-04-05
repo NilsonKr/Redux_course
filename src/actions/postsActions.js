@@ -4,6 +4,7 @@ import { USERS_FETCH } from '../types/usersTypes';
 
 // const apiUrl = 'http://jsonplaceholder.typicode.com/posts';
 const singleApiUrl = 'http://jsonplaceholder.typicode.com/posts?userId=';
+const commentsUrl = 'https://jsonplaceholder.typicode.com/comments?postId=';
 
 //Load the fetch posts and also give a reference to user of his posts
 export const getSingle = indexUser => async (dispatch, getState) => {
@@ -61,14 +62,18 @@ export const getSingle = indexUser => async (dispatch, getState) => {
 	}
 };
 
-export const openClose = (postArray, postIndex) => (dispatch, getState) => {
+export const openClose = (postArray, postIndex) => async (dispatch, getState) => {
 	//Get The post Picked from state
 	const { posts } = getState().postsReducer;
 	const postPicked = posts[postArray][postIndex];
 
+	//fetching Comments
+	const { data } = await axios.get(commentsUrl + postPicked.id);
+
 	//Update view of the post
 	const updatedPost = {
 		...postPicked,
+		comments: data,
 		isOpen: !postPicked.isOpen,
 	};
 

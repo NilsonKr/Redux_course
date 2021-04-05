@@ -1,12 +1,17 @@
 import React from 'react';
 
-const Comments = () => {
+const Comments = props => {
+	const { post } = props;
+
 	return (
-		<ul>
-			<li>Hey</li>
-			<li>Whats</li>
-			<li>Up</li>
-		</ul>
+		<React.Fragment>
+			{post.comments.map(comment => (
+				<ul>
+					<li>{comment.email}</li>
+					<li>{comment.body}</li>
+				</ul>
+			))}
+		</React.Fragment>
 	);
 };
 

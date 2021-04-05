@@ -4,6 +4,10 @@ import { openClose } from '../actions/postsActions';
 
 import Comments from './Comments';
 
+// const showComments = (postsIndex , postKey) => {
+// 	openClose(postsIndex, key)
+// }
+
 const PostsList = props => {
 	const { index } = props;
 	const { users } = props.usersReducer;
@@ -26,7 +30,7 @@ const PostsList = props => {
 				>
 					<h2>{post.title}</h2>
 					<em>{post.body}</em>
-					<p>{post.isOpen ? <Comments /> : 'Close'}</p>
+					<p>{post.isOpen ? <Comments post={posts[postsIndex][key]} /> : 'Close'}</p>
 				</div>
 			))}
 		</div>
