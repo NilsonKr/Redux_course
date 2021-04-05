@@ -26,7 +26,7 @@ const PostsList = props => {
 				>
 					<h2>{post.title}</h2>
 					<em>{post.body}</em>
-					<p>{post.isOpen ? <Comments /> : 'Close'}</p>
+					<p>{post.isOpen ? <Comments post={posts[postsIndex][key]} /> : 'Close'}</p>
 				</div>
 			))}
 		</div>

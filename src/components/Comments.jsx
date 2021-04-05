@@ -1,13 +1,22 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import postsReducer from '../reducers/postsReducer';
 
-const Comments = () => {
+const Comments = props => {
+	//Render Comments
+
 	return (
-		<ul>
-			<li>Hey</li>
-			<li>Whats</li>
-			<li>Up</li>
-		</ul>
+		<React.Fragment>
+			{props.post.comments.map(comment => (
+				<ul>
+					<li>{comment.email}</li>
+					<li>{comment.body}</li>
+				</ul>
+			))}
+		</React.Fragment>
 	);
 };
 
-export default Comments;
+const mapStateToProps = ({ postsReducer }) => postsReducer;
+
+export default connect(mapStateToProps)(Comments);
