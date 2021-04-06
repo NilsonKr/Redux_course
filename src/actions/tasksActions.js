@@ -1,5 +1,11 @@
-import { TASKS_LOADING, TASKS_UPDATE, TASKS_ERROR } from '../types/tasksTypes';
 import axios from 'axios';
+import {
+	TASKS_LOADING,
+	TASKS_UPDATE,
+	TASKS_ERROR,
+	TASKS_DESCRIPTION,
+	TASKS_USERQUERY,
+} from '../types/tasksTypes';
 
 const apiUrl = 'https://jsonplaceholder.typicode.com/todos';
 
@@ -39,4 +45,14 @@ export const getAll = () => async dispatch => {
 			payload: error.message,
 		});
 	}
+};
+
+export const setQuery = (name, value) => dispatch => {
+	//Defining what value change on the state (There's only 2 values)
+	const dispatchType = name === 'userQuery' ? TASKS_USERQUERY : TASKS_DESCRIPTION;
+
+	dispatch({
+		type: dispatchType,
+		payload: value,
+	});
 };

@@ -1,9 +1,17 @@
-import { TASKS_LOADING, TASKS_UPDATE, TASKS_ERROR } from '../types/tasksTypes';
+import {
+	TASKS_LOADING,
+	TASKS_UPDATE,
+	TASKS_ERROR,
+	TASKS_DESCRIPTION,
+	TASKS_USERQUERY,
+} from '../types/tasksTypes';
 
 const INITIAL_STATE = {
 	loading: false,
 	error: null,
 	tasks: {},
+	userQuery: '',
+	description: '',
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -16,6 +24,12 @@ export default (state = INITIAL_STATE, action) => {
 			break;
 		case TASKS_ERROR:
 			return { ...state, loading: false, error: action.payload };
+			break;
+		case TASKS_USERQUERY:
+			return { ...state, userQuery: action.payload };
+			break;
+		case TASKS_DESCRIPTION:
+			return { ...state, description: action.payload };
 			break;
 		default:
 			return state;

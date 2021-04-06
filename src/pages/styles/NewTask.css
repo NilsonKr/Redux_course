@@ -1,0 +1,32 @@
+.newtask__container {
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	justify-content: center;
+	width: 80%;
+	margin: 50px auto 0;
+}
+
+.newtask__container h2 {
+	font-size: 3rem;
+}
+
+.newtask__input {
+	margin: 10px 0;
+	font-size: 1.2rem;
+}
+
+.newtask__input input {
+	margin-left: 10px;
+}
+
+.savetask--button {
+	margin: 20px 0 0;
+	padding: 10px;
+	font-size: 2rem;
+	color: white;
+	background: mediumvioletred;
+	border: none;
+	border-radius: 30px;
+	cursor: pointer;
+}

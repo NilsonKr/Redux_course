@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import * as tasksActions from '../actions/tasksActions';
 
 import TasksList from '../components/Tasks';
@@ -12,8 +13,13 @@ const TasksContainer = props => {
 	}, []);
 
 	return (
-		<div className='tasks__container'>
-			<TasksList />
+		<div className='task__container'>
+			<Link to='/settask' className='newTask--button'>
+				<button>New Task</button>
+			</Link>
+			<div className='tasks__layout'>
+				<TasksList />
+			</div>
 		</div>
 	);
 };
