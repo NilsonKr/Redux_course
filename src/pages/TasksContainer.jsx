@@ -2,20 +2,22 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import * as tasksActions from '../actions/tasksActions';
 
-const Tasks = props => {
-	console.log(props);
+import TasksList from '../components/Tasks';
 
+import './styles/Tasks.css';
+
+const TasksContainer = props => {
 	useEffect(() => {
 		props.getAll();
 	}, []);
 
 	return (
-		<div className='mainContainer'>
-			<h1>You Are on the tasks Section</h1>
+		<div className='tasks__container'>
+			<TasksList />
 		</div>
 	);
 };
 
 const mapStateToProps = reducers => reducers.tasksReducer;
 
-export default connect(mapStateToProps, tasksActions)(Tasks);
+export default connect(mapStateToProps, tasksActions)(TasksContainer);

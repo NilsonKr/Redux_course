@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Layout from './components/Layout';
 import Home from './pages/Home';
-import Tasks from './pages/Tasks';
+import TasksContainer from './pages/TasksContainer';
 import Posts from './pages/Posts';
 
 const App = () => {
@@ -13,7 +13,7 @@ const App = () => {
 				<Switch>
 					<Route exact path='/' component={Home} />
 					<Route exact path='/posts/:key' component={Posts} />
-					<Route exact path='/tasks' component={Tasks} />
+					<Route exact path='/tasks' component={TasksContainer} />
 				</Switch>
 			</Layout>
 		</BrowserRouter>

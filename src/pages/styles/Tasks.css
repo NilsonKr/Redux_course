@@ -1,0 +1,28 @@
+.tasks__container {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	width: 70%;
+	margin: 0 auto;
+	padding: 50px 0 0;
+}
+
+.tasks__user {
+	padding: 20px 5px;
+	border-bottom: 2px solid mediumslateblue;
+}
+
+.tasks__user h2 {
+	font-size: 2rem;
+}
+
+.task {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin: 10px 0;
+}
+
+.task__description {
+	min-width: 90%;
+	text-align: left;
+}
