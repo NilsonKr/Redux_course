@@ -1,22 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import * as tasksActions from '../actions/tasksActions';
-
-import './styles/NewTask.css';
-
-const { setQuery } = tasksActions;
 
 const NewTask = props => {
-	//Change query on the props
-	const changeQuery = ev => {
-		const name = ev.target.name;
-		const value = ev.target.value;
-
-		props.setQuery(name, value);
-	};
+	//Getting the  methods to update the query and send a post
+	const { changeQuery, saveTask } = props;
 
 	return (
-		<div className='newtask__container'>
+		<React.Fragment>
 			<h2>Set New Task</h2>
 			<label htmlFor='' className='newtask__input'>
 				<span>User Id: </span>
@@ -36,16 +26,13 @@ const NewTask = props => {
 					onChange={changeQuery}
 				/>
 			</label>
-			<button className='savetask--button'>Save Task</button>
-		</div>
+			<button className='savetask--button' onClick={saveTask}>
+				Save Task
+			</button>
+		</React.Fragment>
 	);
 };
 
 const mapStateToProps = reducers => reducers.tasksReducer;
 
-//Always have to be an object not a function that return a object ._.
-const mapDispatchToProps = {
-	setQuery,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(NewTask);
+export default connect(mapStateToProps)(NewTask);

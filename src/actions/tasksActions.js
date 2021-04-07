@@ -56,3 +56,9 @@ export const setQuery = (name, value) => dispatch => {
 		payload: value,
 	});
 };
+
+export const saveTask = newTask => async dispatch => {
+	const { data } = await axios.post(apiUrl, newTask);
+
+	console.log(data);
+};

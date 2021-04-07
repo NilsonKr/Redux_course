@@ -5,7 +5,7 @@ import Layout from './components/Layout';
 import Home from './pages/Home';
 import TasksContainer from './pages/TasksContainer';
 import Posts from './pages/Posts';
-import NewTask from './pages/NewTask';
+import NewTaskContainer from './pages/NewTaskContainer';
 
 const App = () => {
 	return (
@@ -15,7 +15,7 @@ const App = () => {
 					<Route exact path='/' component={Home} />
 					<Route exact path='/posts/:key' component={Posts} />
 					<Route exact path='/tasks' component={TasksContainer} />
-					<Route exact path='/settask' component={NewTask} />
+					<Route exact path='/settask' component={NewTaskContainer} />
 				</Switch>
 			</Layout>
 		</BrowserRouter>

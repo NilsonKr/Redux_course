@@ -8,6 +8,7 @@ import TasksList from '../components/Tasks';
 import './styles/Tasks.css';
 
 const TasksContainer = props => {
+	//Fetching Tasks
 	useEffect(() => {
 		props.getAll();
 	}, []);
