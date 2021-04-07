@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import * as tasksActions from '../actions/tasksActions';
 
@@ -9,11 +9,26 @@ import Error from '../components/Error';
 import './styles/NewTask.css';
 import { Redirect } from 'react-router';
 
-const { setQuery } = tasksActions;
-const { saveTask } = tasksActions;
+const { setQuery, saveTask, updateTask } = tasksActions;
 
 const NewTaskContainer = props => {
 	console.log(props);
+	const {
+		match: {
+			params: { taskId, userId },
+		},
+	} = props;
+
+	useEffect(() => {
+		//If theres and referenc on url it means thats to edit component task
+		//Fill the inputs just in case
+		if (taskId && userId) {
+			const task = props.tasks[userId][taskId];
+
+			props.setQuery('userQuery', task.userId);
+			props.setQuery('description', task.title);
+		}
+	});
 
 	//Change query on the props
 	const changeQuery = ev => {
@@ -26,13 +41,27 @@ const NewTaskContainer = props => {
 	//Save New task and shot the post
 	const saveTask = ev => {
 		const { userQuery, description } = props;
-		const newTask = {
-			title: description,
-			userId: userQuery,
-			completed: false,
-		};
 
-		props.saveTask(newTask);
+		//Define if is to update or create task
+		if (taskId && userId) {
+			const task = props.tasks[userId][taskId];
+
+			const newTask = {
+				title: task.title,
+				userId: task.userId,
+				completed: task.completed,
+			};
+
+			props.updateTask(newTask);
+		} else {
+			const newTask = {
+				title: description,
+				userId: userQuery,
+				completed: false,
+			};
+
+			props.saveTask(newTask);
+		}
 	};
 
 	return (
@@ -51,6 +80,7 @@ const mapStateToProps = reducers => reducers.tasksReducer;
 const mapDispatchToProps = {
 	setQuery,
 	saveTask,
+	updateTask,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewTaskContainer);

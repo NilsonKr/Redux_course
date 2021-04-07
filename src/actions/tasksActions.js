@@ -76,3 +76,7 @@ export const saveTask = newTask => async dispatch => {
 		});
 	}
 };
+
+export const updateTask = taskUpdated => async dispatch => {
+	console.log(taskUpdated);
+};

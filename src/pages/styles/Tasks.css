@@ -21,15 +21,18 @@
 }
 
 .task {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	margin: 10px 0;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	place-items: center;
+	margin: 20px 0;
 }
 
 .task__description {
-	min-width: 90%;
+	min-width: 100%;
 	text-align: left;
+}
+.task__description input {
+	margin-right: 5px;
 }
 
 .newTask--button {
@@ -47,4 +50,31 @@
 	background-color: mediumvioletred;
 	color: white;
 	cursor: pointer;
+}
+
+.tasks__options {
+	display: flex;
+}
+.tasks__options button {
+	margin: 0 5px;
+}
+
+.edit--button {
+	padding: 5px;
+	font-size: 1.1rem;
+	color: white;
+	background: rgb(37, 236, 37);
+	border: none;
+	border-radius: 20px;
+	cursor: pointer;
+}
+
+.remove--button {
+	cursor: pointer;
+	padding: 5px;
+	font-size: 1.1rem;
+	color: white;
+	background: rgb(255, 95, 95);
+	border: none;
+	border-radius: 20px;
 }

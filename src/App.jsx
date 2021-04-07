@@ -16,6 +16,11 @@ const App = () => {
 					<Route exact path='/posts/:key' component={Posts} />
 					<Route exact path='/tasks' component={TasksContainer} />
 					<Route exact path='/settask' component={NewTaskContainer} />
+					<Route
+						exact
+						path='/settask/edit/:userId/:taskId'
+						component={NewTaskContainer}
+					/>
 				</Switch>
 			</Layout>
 		</BrowserRouter>
