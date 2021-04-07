@@ -10,7 +10,10 @@ import './styles/Tasks.css';
 const TasksContainer = props => {
 	//Fetching Tasks
 	useEffect(() => {
-		props.getAll();
+		//Turn the object to array and check it lenght to fetch or not
+		if (!Object.keys(props.tasks).length) {
+			props.getAll();
+		}
 	}, []);
 
 	return (

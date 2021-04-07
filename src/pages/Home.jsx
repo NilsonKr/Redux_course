@@ -14,11 +14,19 @@ const Home = props => {
 	}, []);
 
 	if (props.error) {
-		return <Error message={props.error} />;
+		return (
+			<div className='mainContainer'>
+				<Error message={props.error} />
+			</div>
+		);
 	}
 
 	if (props.loading) {
-		return <Loader />;
+		return (
+			<div className='mainContainer'>
+				<Loader />
+			</div>
+		);
 	}
 
 	return (

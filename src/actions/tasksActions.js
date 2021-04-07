@@ -5,6 +5,7 @@ import {
 	TASKS_ERROR,
 	TASKS_DESCRIPTION,
 	TASKS_USERQUERY,
+	TASKS_POST,
 } from '../types/tasksTypes';
 
 const apiUrl = 'https://jsonplaceholder.typicode.com/todos';
@@ -58,7 +59,20 @@ export const setQuery = (name, value) => dispatch => {
 };
 
 export const saveTask = newTask => async dispatch => {
-	const { data } = await axios.post(apiUrl, newTask);
+	dispatch({
+		type: TASKS_LOADING,
+	});
 
-	console.log(data);
+	try {
+		const { data } = await axios.post(apiUrl, newTask);
+
+		dispatch({
+			type: TASKS_POST,
+		});
+	} catch (error) {
+		dispatch({
+			type: TASKS_ERROR,
+			payload: error.message,
+		});
+	}
 };

@@ -1,9 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 const NewTask = props => {
 	//Getting the  methods to update the query and send a post
 	const { changeQuery, saveTask } = props;
+
+	const isAllow = () => {
+		const { loading, userQuery, description } = props;
+
+		if (loading) {
+			return true;
+		}
+		if (!userQuery || !description) {
+			return true;
+		}
+
+		return false;
+	};
 
 	return (
 		<React.Fragment>
@@ -26,7 +40,7 @@ const NewTask = props => {
 					onChange={changeQuery}
 				/>
 			</label>
-			<button className='savetask--button' onClick={saveTask}>
+			<button className='savetask--button' onClick={saveTask} disabled={isAllow()}>
 				Save Task
 			</button>
 		</React.Fragment>

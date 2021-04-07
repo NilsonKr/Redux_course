@@ -10,7 +10,7 @@ const TasksList = props => {
 	return (
 		<React.Fragment>
 			{tasksKeys.map(taskKey => (
-				<div className='task'>
+				<div className='task' key={userTasks[taskKey].id}>
 					{/* render task on the users tasks object position determined by taskKey  */}
 					<input type='checkbox' defaultChecked={userTasks[taskKey].completed} />
 					<div className='task__description'>
