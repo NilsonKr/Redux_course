@@ -5,7 +5,7 @@ import {
 	TASKS_ERROR,
 	TASKS_DESCRIPTION,
 	TASKS_USERQUERY,
-	TASKS_POST,
+	TASKS_NEW_UPDATE,
 } from '../types/tasksTypes';
 
 const apiUrl = 'https://jsonplaceholder.typicode.com/todos';
@@ -67,7 +67,7 @@ export const saveTask = newTask => async dispatch => {
 		const { data } = await axios.post(apiUrl, newTask);
 
 		dispatch({
-			type: TASKS_POST,
+			type: TASKS_NEW_UPDATE,
 		});
 	} catch (error) {
 		dispatch({
@@ -79,4 +79,33 @@ export const saveTask = newTask => async dispatch => {
 
 export const updateTask = taskUpdated => async dispatch => {
 	console.log(taskUpdated);
+	// 	dispatch({
+	// 		type: TASKS_LOADING,
+	// 	});
+
+	// 	const taskId = taskUpdated.id;
+
+	// 	try {
+	// 		const { data } = await axios.put(apiUrl + taskId, taskUpdated);
+	// 	} catch (error) {}
+};
+
+export const setCompleted = (userTask, taskId) => async (dispatch, getState) => {
+	const { tasks } = getState().tasksReducer;
+	const taskPicked = tasks[userTask][taskId];
+
+	const taskUpdated = {
+		...taskPicked,
+		completed: !taskPicked.completed,
+	};
+
+	//Inmutabilitie
+	const newTasks = { ...tasks };
+	newTasks[userTask] = { ...tasks[userTask] };
+	newTasks[userTask][taskId] = taskUpdated;
+
+	dispatch({
+		type: TASKS_UPDATE,
+		payload: newTasks,
+	});
 };

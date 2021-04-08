@@ -27,8 +27,11 @@ const NewTaskContainer = props => {
 
 			props.setQuery('userQuery', task.userId);
 			props.setQuery('description', task.title);
+		} else {
+			props.setQuery('userQuery', '');
+			props.setQuery('description', '');
 		}
-	});
+	}, []);
 
 	//Change query on the props
 	const changeQuery = ev => {
@@ -47,8 +50,9 @@ const NewTaskContainer = props => {
 			const task = props.tasks[userId][taskId];
 
 			const newTask = {
-				title: task.title,
-				userId: task.userId,
+				...task,
+				title: props.description,
+				userId: props.userId,
 				completed: task.completed,
 			};
 

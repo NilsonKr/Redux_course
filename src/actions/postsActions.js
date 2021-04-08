@@ -77,8 +77,11 @@ export const openClose = (postArray, postIndex) => async (dispatch, getState) =>
 		comments: data,
 	};
 
-	//Set posts With the updated post
+	//Set posts With the updated post && unmutabilitie
 	const newPosts = [...posts];
+
+	newPosts[postArray] = [...posts[postArray]];
+
 	newPosts[postArray][postIndex] = updatedPost;
 
 	dispatch({

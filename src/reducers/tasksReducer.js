@@ -4,7 +4,7 @@ import {
 	TASKS_ERROR,
 	TASKS_DESCRIPTION,
 	TASKS_USERQUERY,
-	TASKS_POST,
+	TASKS_NEW_UPDATE,
 } from '../types/tasksTypes';
 
 const INITIAL_STATE = {
@@ -27,7 +27,7 @@ export default (state = INITIAL_STATE, action) => {
 		case TASKS_ERROR:
 			return { ...state, loading: false, error: action.payload };
 			break;
-		case TASKS_POST:
+		case TASKS_NEW_UPDATE:
 			//Rebooting all the values to update
 			return {
 				...state,

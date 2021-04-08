@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import postsReducer from '../reducers/postsReducer';
 
 const Comments = props => {
 	//Render Comments
@@ -8,7 +7,7 @@ const Comments = props => {
 	return (
 		<React.Fragment>
 			{props.post.comments.map(comment => (
-				<ul>
+				<ul key={comment.id}>
 					<li>{comment.email}</li>
 					<li>{comment.body}</li>
 				</ul>
