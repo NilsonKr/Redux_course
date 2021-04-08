@@ -27,9 +27,9 @@ const TasksList = props => {
 						<Link to={`/settask/edit/${props.userId}/${tasksId}`}>
 							<button className='edit--button'>Edit</button>
 						</Link>
-						<Link to={`/settask/edit/${props.userId}/${tasksId}`}>
-							<button className='remove--button'>Remove</button>
-						</Link>
+						<button onClick={() => props.openDelete()} className='remove--button'>
+							Remove
+						</button>
 					</div>
 				</div>
 			))}

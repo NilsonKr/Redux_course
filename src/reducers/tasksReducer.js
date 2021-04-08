@@ -5,6 +5,7 @@ import {
 	TASKS_DESCRIPTION,
 	TASKS_USERQUERY,
 	TASKS_NEW_UPDATE,
+	OPEN_DELETE_MODAL,
 } from '../types/tasksTypes';
 
 const INITIAL_STATE = {
@@ -14,12 +15,19 @@ const INITIAL_STATE = {
 	userQuery: '',
 	description: '',
 	isBack: false,
+	isDeleteOpen: false,
 };
 
 export default (state = INITIAL_STATE, action) => {
 	switch (action.type) {
 		case TASKS_UPDATE:
-			return { ...state, loading: false, tasks: action.payload, isBack: false };
+			return {
+				...state,
+				loading: false,
+				tasks: action.payload,
+				isBack: false,
+				isDeleteOpen: false,
+			};
 			break;
 		case TASKS_LOADING:
 			return { ...state, loading: true };
@@ -44,6 +52,8 @@ export default (state = INITIAL_STATE, action) => {
 		case TASKS_DESCRIPTION:
 			return { ...state, description: action.payload };
 			break;
+		case OPEN_DELETE_MODAL:
+			return { ...state, isDeleteOpen: action.payload };
 		default:
 			return state;
 	}

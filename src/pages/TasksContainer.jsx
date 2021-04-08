@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import * as tasksActions from '../actions/tasksActions';
 
 import TasksList from '../components/Tasks';
+import DeleteModal from '../components/DeleteModal';
 
 import './styles/Tasks.css';
 
@@ -24,6 +25,7 @@ const TasksContainer = props => {
 			<div className='tasks__layout'>
 				<TasksList />
 			</div>
+			{props.isDeleteOpen && <DeleteModal />}
 		</div>
 	);
 };

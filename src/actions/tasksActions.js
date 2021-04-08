@@ -6,6 +6,7 @@ import {
 	TASKS_DESCRIPTION,
 	TASKS_USERQUERY,
 	TASKS_NEW_UPDATE,
+	OPEN_DELETE_MODAL,
 } from '../types/tasksTypes';
 
 const apiUrl = 'https://jsonplaceholder.typicode.com/todos';
@@ -100,6 +101,7 @@ export const updateTask = taskUpdated => async dispatch => {
 };
 
 export const setCompleted = (userTask, taskId) => async (dispatch, getState) => {
+	//Get Task
 	const { tasks } = getState().tasksReducer;
 	const taskPicked = tasks[userTask][taskId];
 
@@ -116,5 +118,15 @@ export const setCompleted = (userTask, taskId) => async (dispatch, getState) => 
 	dispatch({
 		type: TASKS_UPDATE,
 		payload: newTasks,
+	});
+};
+
+export const openDelete = () => (dispatch, getState) => {
+	const { isDeleteOpen } = getState().tasksReducer;
+	console.log(isDeleteOpen);
+
+	dispatch({
+		type: OPEN_DELETE_MODAL,
+		payload: !isDeleteOpen,
 	});
 };
