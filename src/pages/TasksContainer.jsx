@@ -9,13 +9,15 @@ import DeleteModal from '../components/DeleteModal';
 import './styles/Tasks.css';
 
 const TasksContainer = props => {
+	console.log(props);
 	//Fetching Tasks
 	useEffect(() => {
 		//Turn the object to array and check it lenght to fetch or not
 		if (!Object.keys(props.tasks).length) {
+			console.log('hey');
 			props.getAll();
 		}
-	}, []);
+	}, [props.tasks]);
 
 	return (
 		<div className='task__container'>

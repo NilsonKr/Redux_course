@@ -100,6 +100,25 @@ export const updateTask = taskUpdated => async dispatch => {
 	}
 };
 
+export const deleteTask = taskId => async dispatch => {
+	dispatch({
+		type: TASKS_LOADING,
+	});
+
+	try {
+		const response = await axios.delete(apiUrl + `/${taskId}`);
+
+		dispatch({
+			type: TASKS_NEW_UPDATE,
+		});
+	} catch (error) {
+		dispatch({
+			type: TASKS_ERROR,
+			payload: error.message,
+		});
+	}
+};
+
 export const setCompleted = (userTask, taskId) => async (dispatch, getState) => {
 	//Get Task
 	const { tasks } = getState().tasksReducer;
@@ -121,9 +140,9 @@ export const setCompleted = (userTask, taskId) => async (dispatch, getState) => 
 	});
 };
 
+//Set Visible State of delete Modal
 export const openDelete = () => (dispatch, getState) => {
 	const { isDeleteOpen } = getState().tasksReducer;
-	console.log(isDeleteOpen);
 
 	dispatch({
 		type: OPEN_DELETE_MODAL,

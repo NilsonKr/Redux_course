@@ -6,8 +6,6 @@ import * as tasksActions from '../actions/tasksActions';
 import './styles/deleteModal.css';
 
 const DeleteModal = props => {
-	console.log(props);
-
 	return ReactDOM.createPortal(
 		<div className='deletemodal__bg'>
 			<div className='deletemodal__container'>
@@ -16,7 +14,9 @@ const DeleteModal = props => {
 					<button className='edit--button ' onClick={() => props.openDelete()}>
 						Cancel
 					</button>
-					<button className='remove--button '>Delete</button>
+					<button className='remove--button' onClick={() => props.deleteTask()}>
+						Delete
+					</button>
 				</div>
 			</div>
 		</div>,
