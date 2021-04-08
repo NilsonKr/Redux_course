@@ -79,15 +79,24 @@ export const saveTask = newTask => async dispatch => {
 
 export const updateTask = taskUpdated => async dispatch => {
 	console.log(taskUpdated);
-	// 	dispatch({
-	// 		type: TASKS_LOADING,
-	// 	});
+	dispatch({
+		type: TASKS_LOADING,
+	});
 
-	// 	const taskId = taskUpdated.id;
+	const taskId = `/${taskUpdated.id}`;
 
-	// 	try {
-	// 		const { data } = await axios.put(apiUrl + taskId, taskUpdated);
-	// 	} catch (error) {}
+	try {
+		const { data } = await axios.put(apiUrl + taskId, taskUpdated);
+
+		dispatch({
+			type: TASKS_NEW_UPDATE,
+		});
+	} catch (error) {
+		dispatch({
+			type: TASKS_ERROR,
+			payload: error.message,
+		});
+	}
 };
 
 export const setCompleted = (userTask, taskId) => async (dispatch, getState) => {
